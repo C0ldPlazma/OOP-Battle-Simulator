@@ -3,7 +3,20 @@ from hero import Hero
 
 
 ARENA_NAME = "Balcony of Restless Whimsy"
-Hero = Hero('Jimithy')
+JIM = Hero('Jimithy')
+
+def battle(hero: Hero, enemy: Goblin):
+    while hero.is_alive() and enemy.is_alive():
+        hero_damage = hero.attack()
+        enemy.take_damage(hero_damage)
+
+        if enemy.is_alive():
+            enemy_damage = enemy.attack()
+            hero.take_damage(enemy_damage)
+    if hero.is_alive():
+        print(f"{hero.name} has abused the poor thing to literal death.")
+    else:
+        print(f"{enemy.name} the helpless creature puts the arrogant and horrible being in it's pathetic place.")
 
 
 def main():
@@ -17,10 +30,10 @@ def main():
 
     print(f"{goblin.name} and {goblin2.name} enter the arena with {goblin.health} and {goblin2.health} health.")
     print("But no hero has answered the call... yet.")
-    print(f"And then the great, noble, awe inspiring humanoid thing {Hero.name} arives out of plot convinience!")
-    print(f"This being claims that he is of the {Hero.role} class.")
+    print(f"And then the great, noble, awe inspiring humanoid thing {JIM.name} arives out of plot convinience!")
+    print(f"This being claims that he is of the {JIM.role} class.")
     print(f"And the great benevolant being chooses violence, striking at {goblin.name}...")
-    goblin.take_damage(Hero.attack())
+    battle(JIM, goblin)
 
 
 if __name__ == "__main__":
