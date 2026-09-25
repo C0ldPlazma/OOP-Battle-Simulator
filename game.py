@@ -1,9 +1,11 @@
 from goblin import Goblin
 from hero import Hero
+from boss import Boss
 
 
 ARENA_NAME = "Balcony of Restless Whimsy"
 JIM = Hero('Jimithy')
+
 
 def battle(hero: Hero, enemy: Goblin):
     while hero.is_alive() and enemy.is_alive():
@@ -16,7 +18,7 @@ def battle(hero: Hero, enemy: Goblin):
     if hero.is_alive():
         print(f"{hero.name} has abused the poor thing to literal death.")
     else:
-        print(f"{enemy.name} the helpless creature puts the arrogant and horrible being in it's pathetic place.")
+        print(f"{enemy.name}, the helpless creature puts the arrogant and horrible being in it's pathetic place.")
 
 
 def main():
@@ -34,6 +36,10 @@ def main():
     print(f"This being claims that he is of the {JIM.role} class.")
     print(f"And the great benevolant being chooses violence, striking at {goblin.name}...")
     battle(JIM, goblin)
+
+    boss = Boss("Martha")
+    print("Martha falls off of an airplane and falls onto the field.")
+    battle(JIM, boss)
 
 
 if __name__ == "__main__":

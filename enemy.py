@@ -1,18 +1,16 @@
 import random
-from enemy import Enemy
 
-
-class Goblin(Enemy):
+class Enemy:
     """A completed character class students can examine as an OOP example."""
 
-    def __init__(self, name):
-        super().__init__(name, 100)
-        self.attack_power = 15
+    def __init__(self, name, health = 15):
+        self.name = name
+        self.health = health
+        self.attack_power = 1
 
-    def shank(self):
+    def attack(self):
         """Return a random amount of damage."""
         return random.randint(1, self.attack_power)
-        return super().attack()
 
     def take_damage(self, damage):
         """Reduce health without allowing it to fall below zero."""
@@ -20,5 +18,5 @@ class Goblin(Enemy):
         print(f"{self.name} takes {damage} damage. Health: {self.health}")
 
     def is_alive(self):
-        """Return True while the goblin has health remaining."""
+        """Return True while the enemy has health remaining."""
         return self.health > 0
